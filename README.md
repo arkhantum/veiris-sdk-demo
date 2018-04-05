@@ -9,27 +9,27 @@ Certain key must be obtained from our customer support.
 To start implementing, implement the dependency from our library distribution repo then add it to 
 your application's build.gradle :
 
-                **implementation 'com.veiris:lib:1.0.2'**
+                implementation 'com.veiris:lib:1.0.2'
 
 also it needs to mention the repository reference in your application's build.gradle  :
 
-                **repositories {
+                repositories {
                     ....
                     maven {
                         url  "https://isocorp.bintray.com/maven"
                     }
-                }**
+                }
 
 In your project' build.gradle add below refferences :
 
 
-                **buildscript {
+                buildscript {
                 
                     repositories {
                         ...
                        maven { url "http://dl.bintray.com/isocorpteam/maven" }
                     }
-                }**
+                }
 
 Then your app is ready to use the SDK.
 
@@ -47,36 +47,36 @@ pre-post confirmation and post validation from your document uploading process.
 
 To do the API call, the SDK use some presenter mechanism as below :
  
-        **sdkVeiris.getSdkPresenter().setRouter(this);**
+        sdkVeiris.getSdkPresenter().setRouter(this);
         //Create Check License Token, The result can be taken through onLicenseDone Interface
-        **String token = sdkVeiris.getTokenSDKcheck(api_key,credential_code,credential_token);**
+        String token = sdkVeiris.getTokenSDKcheck(api_key,credential_code,credential_token);**
         //SDK for checking license through API
-        **sdkVeiris.getSdkPresenter().checkLicense(token);**
+        sdkVeiris.getSdkPresenter().checkLicense(token);
         //Gather prepost Token
-        **String prepostToken = sdkVeiris.getPrepostToken(api_key,credential_code,credential_token,refference_id);**
+        String prepostToken = sdkVeiris.getPrepostToken(api_key,credential_code,credential_token,refference_id);**
         //SDK for doing prepost validation
-        **sdkVeiris.getSdkPresenter().checkPrepostValidation(prepostToken);**
+        sdkVeiris.getSdkPresenter().checkPrepostValidation(prepostToken);
         //Gather Validation Token
-        **String validationToken = sdkVeiris.getValidationToken(api_key,credential_code,credential_token,refference_id
-                ,scan_type);**
+        String validationToken = sdkVeiris.getValidationToken(api_key,credential_code,credential_token,refference_id
+                ,scan_type);
         //SDK for doing validation
-        **sdkVeiris.getSdkPresenter().checkValidation(validationToken);**
+        sdkVeiris.getSdkPresenter().checkValidation(validationToken);
 
 To access Scan Passport use below :
 
-         **sdkVeiris.startWithCamera(view);**
+         sdkVeiris.startWithCamera(view);
          
 Then get the result from **onActivityResult(int requestCode, int resultCode, Intent data)**
 as below : 
 
-                **if (requestCode == sdkVeiris.REQUEST_SCAN_ID) {
+                if (requestCode == sdkVeiris.REQUEST_SCAN_ID) {
                     sdkVeiris.checkScanResult(requestCode, resultCode, data);
                     if (sdkVeiris.SCAN_DONE) {
                         Log.v("json array string", sdkVeiris.getJsonResultString());
                         Log.v("IDscanned String", sdkVeiris.getImageString());
                         iv.setImageBitmap(sdkVeiris.getScanIDImage());
                     }
-                }**
+                }
                 
 String Json result and Base64 String image can be used and processed furthermore.
 
