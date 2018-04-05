@@ -49,11 +49,11 @@ To do the API call, the SDK use some presenter mechanism as below :
  
         sdkVeiris.getSdkPresenter().setRouter(this);
         //Create Check License Token, The result can be taken through onLicenseDone Interface
-        String token = sdkVeiris.getTokenSDKcheck(api_key,credential_code,credential_token);**
+        String token = sdkVeiris.getTokenSDKcheck(api_key,credential_code,credential_token);
         //SDK for checking license through API
         sdkVeiris.getSdkPresenter().checkLicense(token);
         //Gather prepost Token
-        String prepostToken = sdkVeiris.getPrepostToken(api_key,credential_code,credential_token,refference_id);**
+        String prepostToken = sdkVeiris.getPrepostToken(api_key,credential_code,credential_token,refference_id);
         //SDK for doing prepost validation
         sdkVeiris.getSdkPresenter().checkPrepostValidation(prepostToken);
         //Gather Validation Token
