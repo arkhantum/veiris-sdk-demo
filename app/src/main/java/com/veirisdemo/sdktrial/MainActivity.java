@@ -1,6 +1,7 @@
 package com.veirisdemo.sdktrial;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -38,6 +39,10 @@ public class MainActivity extends AppCompatActivity implements SDKVeirisInterfac
         tvExecutionDate=(TextView)findViewById(R.id.prepostExecutionDate);
         tvValidationResult=(TextView)findViewById(R.id.validationResult);
         tvValidationExecutionDate=(TextView)findViewById(R.id.validationExecutionDate);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        }
         //init SDK veiris config;
         sdkVeiris = new SDKVeiris(this,this,SCAN_KEY);
         //add below to get result on interface
@@ -118,4 +123,6 @@ public class MainActivity extends AppCompatActivity implements SDKVeirisInterfac
         tvValidationExecutionDate.setText("Validation "+validationDate);
 
     }
+
+
 }
