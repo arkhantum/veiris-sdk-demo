@@ -20,7 +20,7 @@ also it needs to mention the repository reference in your application's build.gr
                     }
                 }
 
-In your project' build.gradle add below refferences :
+In your project build.gradle add below refferences :
 
 
                 buildscript {
@@ -30,6 +30,18 @@ In your project' build.gradle add below refferences :
                        maven { url "http://dl.bintray.com/isocorpteam/maven" }
                     }
                 }
+
+also please add below in your project build.gradle to support some of our library :
+               
+              allprojects {
+                    repositories {
+                         ...
+                        maven {
+                            url "https://jitpack.io"
+                        }
+                    }
+                }
+
 
 Then your app is ready to use the SDK.
 
